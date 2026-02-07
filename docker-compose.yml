@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  backend:
+    image: kaushikshinde/coffee-backend:latest
+    container_name: coffee-backend
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    restart: always
+
+  frontend:
+    image: kaushikshinde/coffee-frontend:latest
+    container_name: coffee-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    restart: always
